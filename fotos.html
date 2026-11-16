@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotos · Villacán, guardería canina en Moratalaz</title>
+<meta name="description" content="Fotos de los perros que disfrutan de la guardería canina Villacán en Moratalaz, Madrid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="logo" href="index.html">Villacán</a>
+    <nav class="menu" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="fotos.html" aria-current="page">Fotos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="opiniones.html">Opiniones</a>
+    </nav>
+    <a class="btn btn-wa btn-mini" data-wa="Hola, me gustaría información sobre la guardería Villacán">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <p class="frase">De día, a jugar</p>
+        <h1>Fotos de nuestros peludos</h1>
+        <p class="intro">Así lo pasan en Villacán. Pulsa en cualquier foto para verla en grande y, si es tu perro, ¡déjanos un comentario!</p>
+      </div>
+      <div class="galeria" id="galeria-fotos"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="contenedor">
+      <div class="llamada">
+        <h2>¿Quieres ver más?</h2>
+        <p>Encontrarás más fotos y vídeos en nuestro Instagram.</p>
+        <div class="acciones">
+          <a class="btn btn-blanco" href="https://www.instagram.com/villacan_cuidado_de_mascotas/" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="visor" class="visor" aria-label="Foto ampliada">
+  <button class="cerrar" type="button" aria-label="Cerrar">×</button>
+  <img src="" alt="">
+  <div class="visor-pie">
+    <p class="visor-texto"></p>
+    <a class="btn btn-wa visor-comentar" target="_blank" rel="noopener">Comentar esta foto por WhatsApp</a>
+  </div>
+</dialog>
+
+<footer class="pie-pagina">
+  <div class="contenedor">
+    <div class="columnas">
+      <div>
+        <a class="logo" href="index.html">Villacán</a>
+        <p>Tu mascota en las mejores manos.<br>Guardería canina en Moratalaz, Madrid.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="tel:+34699028284">699 028 284</a></li>
+          <li><a data-wa="Hola, me gustaría información sobre la guardería Villacán">WhatsApp</a></li>
+          <li>Moratalaz, Madrid</li>
+          <li>Día y noche, todo el año</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Síguenos</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/villacan_cuidado_de_mascotas/" target="_blank" rel="noopener">Instagram</a></li>
+          <li>Facebook: Villacán</li>
+          <li><a href="https://x.com/hogar_feliz_" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">© <span id="anio">2026</span> Villacán · Guardería canina en Moratalaz</p>
+  </div>
+</footer>
+
+<a class="flotante-wa" data-wa="Hola, me gustaría información sobre la guardería Villacán" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+</a>
+
+<script src="js/datos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

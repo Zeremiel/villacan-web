@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opiniones · Villacán, guardería canina en Moratalaz</title>
+<meta name="description" content="Opiniones de las familias que han confiado en la guardería canina Villacán en Moratalaz, Madrid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="logo" href="index.html">Villacán</a>
+    <nav class="menu" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="fotos.html">Fotos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="opiniones.html" aria-current="page">Opiniones</a>
+    </nav>
+    <a class="btn btn-wa btn-mini" data-wa="Hola, me gustaría información sobre la guardería Villacán">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <p class="frase">Lo que dicen las familias</p>
+        <h1>Opiniones</h1>
+        <p class="intro">La mejor forma de saber cómo se cuida a los perros en Villacán es preguntar a sus dueños.</p>
+      </div>
+      <div class="opiniones" id="lista-opiniones"></div>
+    </div>
+  </section>
+
+  <section class="seccion-blanca" id="dejar-opinion">
+    <div class="contenedor">
+      <form id="form-opinion" class="formulario" novalidate>
+        <h2>Cuéntanos qué tal</h2>
+        <p>¿Tu perro ha estado con nosotros? Tu opinión nos llega por WhatsApp; la revisamos y la publicamos aquí.</p>
+
+        <div class="dos-columnas">
+          <div class="campo">
+            <label for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="given-name" maxlength="60">
+            <p class="error" id="error-nombre" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label for="perro">Nombre de tu perro <span style="font-weight:600">(opcional)</span></label>
+            <input type="text" id="perro" name="perro" maxlength="60">
+          </div>
+        </div>
+
+        <div class="campo">
+          <fieldset>
+            <legend>Puntuación</legend>
+            <div class="selector-estrellas">
+              <input type="radio" id="e5" name="estrellas" value="5"><label for="e5"><span class="oculto-visual">5 estrellas</span>★</label>
+              <input type="radio" id="e4" name="estrellas" value="4"><label for="e4"><span class="oculto-visual">4 estrellas</span>★</label>
+              <input type="radio" id="e3" name="estrellas" value="3"><label for="e3"><span class="oculto-visual">3 estrellas</span>★</label>
+              <input type="radio" id="e2" name="estrellas" value="2"><label for="e2"><span class="oculto-visual">2 estrellas</span>★</label>
+              <input type="radio" id="e1" name="estrellas" value="1"><label for="e1"><span class="oculto-visual">1 estrella</span>★</label>
+            </div>
+          </fieldset>
+          <p class="error" id="error-estrellas" aria-live="polite"></p>
+        </div>
+
+        <div class="campo">
+          <label for="comentario">Tu opinión</label>
+          <textarea id="comentario" name="comentario" maxlength="800" placeholder="¿Qué tal fue la estancia? ¿Cómo volvió tu perro a casa?"></textarea>
+          <p class="error" id="error-comentario" aria-live="polite"></p>
+        </div>
+
+        <div class="campo">
+          <label class="casilla" for="permiso">
+            <input type="checkbox" id="permiso" name="permiso">
+            <span>Acepto que Villacán publique mi opinión en su web junto con mi nombre y el de mi perro.</span>
+          </label>
+          <p class="error" id="error-permiso" aria-live="polite"></p>
+        </div>
+
+        <button class="btn btn-wa" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <p class="aviso-ok" id="aviso-enviado" hidden>¡Gracias! Se ha abierto WhatsApp con tu opinión ya escrita. Solo tienes que pulsar «Enviar».</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <div class="contenedor">
+    <div class="columnas">
+      <div>
+        <a class="logo" href="index.html">Villacán</a>
+        <p>Tu mascota en las mejores manos.<br>Guardería canina en Moratalaz, Madrid.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="tel:+34699028284">699 028 284</a></li>
+          <li><a data-wa="Hola, me gustaría información sobre la guardería Villacán">WhatsApp</a></li>
+          <li>Moratalaz, Madrid</li>
+          <li>Día y noche, todo el año</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Síguenos</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/villacan_cuidado_de_mascotas/" target="_blank" rel="noopener">Instagram</a></li>
+          <li>Facebook: Villacán</li>
+          <li><a href="https://x.com/hogar_feliz_" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">© <span id="anio">2026</span> Villacán · Guardería canina en Moratalaz</p>
+  </div>
+</footer>
+
+<a class="flotante-wa" data-wa="Hola, me gustaría información sobre la guardería Villacán" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+</a>
+
+<script src="js/datos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
