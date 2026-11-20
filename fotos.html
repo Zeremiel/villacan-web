@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=202611201047">
+<link rel="stylesheet" href="css/estilos.css?v=202611201054">
 </head>
 <body>
 
@@ -31,8 +31,9 @@
       <div class="cabecera-seccion">
         <p class="frase">De día, a jugar</p>
         <h1>Fotos de nuestros peludos</h1>
-        <p class="intro">Así lo pasan en Villacán. Pulsa en cualquier foto para verla en grande y, si es tu perro, ¡déjanos un comentario!</p>
+        <p class="intro">Así lo pasan en Villacán. Pulsa en cualquier perro para ver todas sus fotos y, si es el tuyo, ¡déjanos un comentario!</p>
       </div>
+      <div class="huespedes" id="albumes-perros"></div>
       <div class="galeria" id="galeria-fotos"></div>
     </div>
   </section>
@@ -56,6 +57,24 @@
   <div class="visor-pie">
     <p class="visor-texto"></p>
     <a class="btn btn-wa visor-comentar" target="_blank" rel="noopener">Comentar esta foto por WhatsApp</a>
+  </div>
+</dialog>
+
+<dialog id="galeria-perro" class="visor galeria-perro" aria-labelledby="galeria-titulo">
+  <button class="cerrar" type="button" aria-label="Cerrar">×</button>
+  <div class="galeria-escenario">
+    <img src="" alt="">
+    <button class="flecha flecha-ant" type="button" aria-label="Foto anterior">‹</button>
+    <button class="flecha flecha-sig" type="button" aria-label="Foto siguiente">›</button>
+  </div>
+  <div class="visor-pie">
+    <div class="galeria-cabecera">
+      <h3 id="galeria-titulo"></h3>
+      <span class="galeria-contador"></span>
+    </div>
+    <p class="visor-texto"></p>
+    <div class="galeria-miniaturas"></div>
+    <a class="btn btn-wa btn-mini galeria-comentar" target="_blank" rel="noopener">Comentar esta foto por WhatsApp</a>
   </div>
 </dialog>
 
@@ -92,7 +111,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
 </a>
 
-<script src="js/datos.js?v=202611201047"></script>
-<script src="js/main.js?v=202611201047"></script>
+<script src="js/datos.js?v=202611201054"></script>
+<script src="js/main.js?v=202611201054"></script>
 </body>
 </html>

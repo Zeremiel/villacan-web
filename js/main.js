@@ -27,11 +27,15 @@
   var anio = document.getElementById('anio');
   if (anio) anio.textContent = new Date().getFullYear();
 
-  /* ---------- Galería de fotos ---------- */
+  var perros = (datos.perros || []).filter(function (p) { return p.fotos && p.fotos.length; });
+
+  /* ---------- Galería de fotos sueltas ---------- */
   var galeria = document.getElementById('galeria-fotos');
   var visor = document.getElementById('visor');
   if (galeria) {
-    if (datos.fotos.length === 0) {
+    if (datos.fotos.length === 0 && perros.length > 0) {
+      galeria.hidden = true;
+    } else if (datos.fotos.length === 0) {
       var vacioF = crear('div', 'vacio');
       vacioF.appendChild(crear('strong', '', 'Muy pronto, ¡fotos de nuestros peludos!'));
       vacioF.appendChild(crear('span', '', 'Estamos preparando la galería. Mientras tanto, puedes ver más en nuestro Instagram.'));
@@ -139,16 +143,13 @@
     }
   }
 
-  /* ---------- Huéspedes: tarjeta por perro + galería con todas sus fotos ---------- */
-  var listaHuespedes = document.getElementById('lista-huespedes');
+  /* ---------- Álbumes de perros: tarjeta por perro + galería con todas sus fotos ----------
+     · Página de fotos (#albumes-perros): todos los perros.
+     · Portada (#lista-huespedes): hasta 3 perros con "destacado: true"
+       (si no hay ninguno marcado, los 3 primeros). */
   var galeriaPerro = document.getElementById('galeria-perro');
-  var perros = (datos.perros || []).filter(function (p) { return p.fotos && p.fotos.length; });
-  if (listaHuespedes) {
-    if (perros.length === 0) {
-      var seccionH = document.getElementById('huespedes');
-      if (seccionH) seccionH.hidden = true;
-    } else {
-      perros.forEach(function (p) {
+  function pintarAlbumes(contenedor, lista) {
+      lista.forEach(function (p) {
         var b = crear('button', 'huesped');
         b.type = 'button';
         b.setAttribute('aria-label', 'Ver las fotos de ' + p.nombre);
@@ -165,8 +166,21 @@
         if (p.descripcion) info.appendChild(crear('span', 'huesped-desc', p.descripcion));
         b.appendChild(info);
         b.addEventListener('click', function () { abrirGaleria(p, 0); });
-        listaHuespedes.appendChild(b);
+        contenedor.appendChild(b);
       });
+  }
+  var albumes = document.getElementById('albumes-perros');
+  if (albumes) pintarAlbumes(albumes, perros);
+  var listaHuespedes = document.getElementById('lista-huespedes');
+  if (listaHuespedes) {
+    var destacados = perros.filter(function (p) { return p.destacado; });
+    if (destacados.length === 0) destacados = perros;
+    destacados = destacados.slice(0, 3);
+    if (destacados.length === 0) {
+      var seccionH = document.getElementById('huespedes');
+      if (seccionH) seccionH.hidden = true;
+    } else {
+      pintarAlbumes(listaHuespedes, destacados);
     }
   }
 
@@ -180,6 +194,8 @@
     img.alt = f.texto || galeriaActual.nombre;
     galeriaPerro.querySelector('.visor-texto').textContent = f.texto || '';
     galeriaPerro.querySelector('.galeria-contador').textContent = (indiceActual + 1) + ' / ' + fotos.length;
+    var comentar = galeriaPerro.querySelector('.galeria-comentar');
+    if (comentar) comentar.href = enlaceWhatsApp('Hola, os escribo sobre la foto de ' + galeriaActual.nombre + ' "' + (f.texto || (indiceActual + 1)) + '": ');
     galeriaPerro.querySelectorAll('.galeria-miniaturas button').forEach(function (m, n) {
       m.setAttribute('aria-current', n === indiceActual ? 'true' : 'false');
     });

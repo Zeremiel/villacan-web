@@ -31,14 +31,16 @@ window.VILLACAN = {
   opiniones: [
   ],
 
-  /* ---------- HUÉSPEDES (portada) ----------
-     Cada perro sale en la página de inicio con su primera foto como portada.
-     Al pulsarla se abre una galería con todas sus fotos.
+  /* ---------- PERROS (álbumes) ----------
+     Cada perro tiene su álbum en la página de FOTOS: sale su primera foto
+     como portada y al pulsarla se abre una galería con todas sus fotos.
+     Con  destacado: true  sale además en la página de INICIO (máximo 3).
      Las fotos van en  img/perros/NOMBRE/  y solo con permiso de sus dueños.
   */
   perros: [
     {
       nombre: "Camarón",
+      destacado: true,
       descripcion: "Fan de la pelota y de las siestas largas.",
       fotos: [
         { archivo: "img/perros/camaron/camaron-pelota.jpg", texto: "¿Jugamos? ¡La pelota es mía!" },
