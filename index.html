@@ -276,7 +276,17 @@
     </div>
   </section>
 
-  <section class="seccion-blanca" id="instalaciones">
+  <section class="seccion-blanca" id="huespedes">
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <h2>Nuestros huéspedes</h2>
+        <p class="intro">Ellos son los que mejor lo cuentan. Pulsa en cualquiera para ver todas sus fotos.</p>
+      </div>
+      <div class="huespedes" id="lista-huespedes"></div>
+    </div>
+  </section>
+
+  <section id="instalaciones">
     <div class="contenedor">
       <div class="cabecera-seccion">
         <h2>Nuestras instalaciones</h2>
@@ -299,7 +309,7 @@
     </div>
   </section>
 
-  <section id="como-funciona">
+  <section class="seccion-blanca" id="como-funciona">
     <div class="contenedor">
       <div class="cabecera-seccion">
         <h2>¿Cómo funciona?</h2>
@@ -325,6 +335,23 @@
     </div>
   </section>
 </main>
+
+<dialog id="galeria-perro" class="visor galeria-perro" aria-labelledby="galeria-titulo">
+  <button class="cerrar" type="button" aria-label="Cerrar">×</button>
+  <div class="galeria-escenario">
+    <img src="" alt="">
+    <button class="flecha flecha-ant" type="button" aria-label="Foto anterior">‹</button>
+    <button class="flecha flecha-sig" type="button" aria-label="Foto siguiente">›</button>
+  </div>
+  <div class="visor-pie">
+    <div class="galeria-cabecera">
+      <h3 id="galeria-titulo"></h3>
+      <span class="galeria-contador"></span>
+    </div>
+    <p class="visor-texto"></p>
+    <div class="galeria-miniaturas"></div>
+  </div>
+</dialog>
 
 <footer class="pie-pagina">
   <div class="contenedor">

@@ -29,5 +29,21 @@ window.VILLACAN = {
          texto: "Lo que escribió el dueño", fecha: "noviembre 2026" },
   */
   opiniones: [
+  ],
+
+  /* ---------- HUÉSPEDES (portada) ----------
+     Cada perro sale en la página de inicio con su primera foto como portada.
+     Al pulsarla se abre una galería con todas sus fotos.
+     Las fotos van en  img/perros/NOMBRE/  y solo con permiso de sus dueños.
+  */
+  perros: [
+    {
+      nombre: "Camarón",
+      descripcion: "Fan de la pelota y de las siestas largas.",
+      fotos: [
+        { archivo: "img/perros/camaron/camaron-pelota.jpg", texto: "¿Jugamos? ¡La pelota es mía!" },
+        { archivo: "img/perros/camaron/camaron-durmiendo.jpg", texto: "Siesta después de jugar" }
+      ]
+    }
   ]
 };

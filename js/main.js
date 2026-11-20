@@ -139,6 +139,95 @@
     }
   }
 
+  /* ---------- Huéspedes: tarjeta por perro + galería con todas sus fotos ---------- */
+  var listaHuespedes = document.getElementById('lista-huespedes');
+  var galeriaPerro = document.getElementById('galeria-perro');
+  var perros = (datos.perros || []).filter(function (p) { return p.fotos && p.fotos.length; });
+  if (listaHuespedes) {
+    if (perros.length === 0) {
+      var seccionH = document.getElementById('huespedes');
+      if (seccionH) seccionH.hidden = true;
+    } else {
+      perros.forEach(function (p) {
+        var b = crear('button', 'huesped');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Ver las fotos de ' + p.nombre);
+        var marco = crear('span', 'huesped-foto');
+        var im = crear('img');
+        im.src = p.fotos[0].archivo;
+        im.alt = p.fotos[0].texto || p.nombre;
+        im.loading = 'lazy';
+        marco.appendChild(im);
+        marco.appendChild(crear('span', 'huesped-num', p.fotos.length + (p.fotos.length === 1 ? ' foto' : ' fotos')));
+        b.appendChild(marco);
+        var info = crear('span', 'huesped-info');
+        info.appendChild(crear('span', 'huesped-nombre', p.nombre));
+        if (p.descripcion) info.appendChild(crear('span', 'huesped-desc', p.descripcion));
+        b.appendChild(info);
+        b.addEventListener('click', function () { abrirGaleria(p, 0); });
+        listaHuespedes.appendChild(b);
+      });
+    }
+  }
+
+  var galeriaActual = null, indiceActual = 0;
+  function mostrarFoto(i) {
+    var fotos = galeriaActual.fotos;
+    indiceActual = (i + fotos.length) % fotos.length;
+    var f = fotos[indiceActual];
+    var img = galeriaPerro.querySelector('.galeria-escenario img');
+    img.src = f.archivo;
+    img.alt = f.texto || galeriaActual.nombre;
+    galeriaPerro.querySelector('.visor-texto').textContent = f.texto || '';
+    galeriaPerro.querySelector('.galeria-contador').textContent = (indiceActual + 1) + ' / ' + fotos.length;
+    galeriaPerro.querySelectorAll('.galeria-miniaturas button').forEach(function (m, n) {
+      m.setAttribute('aria-current', n === indiceActual ? 'true' : 'false');
+    });
+  }
+  function abrirGaleria(p, i) {
+    if (!galeriaPerro) return;
+    galeriaActual = p;
+    galeriaPerro.querySelector('#galeria-titulo').textContent = p.nombre;
+    var unica = p.fotos.length < 2;
+    galeriaPerro.querySelectorAll('.flecha').forEach(function (fl) { fl.hidden = unica; });
+    var minis = galeriaPerro.querySelector('.galeria-miniaturas');
+    minis.textContent = '';
+    minis.hidden = unica;
+    p.fotos.forEach(function (f, n) {
+      var mb = crear('button');
+      mb.type = 'button';
+      mb.setAttribute('aria-label', 'Foto ' + (n + 1) + ' de ' + p.fotos.length);
+      var mi = crear('img');
+      mi.src = f.archivo;
+      mi.alt = '';
+      mb.appendChild(mi);
+      mb.addEventListener('click', function () { mostrarFoto(n); });
+      minis.appendChild(mb);
+    });
+    mostrarFoto(i);
+    galeriaPerro.showModal();
+  }
+  if (galeriaPerro) {
+    galeriaPerro.querySelector('.cerrar').addEventListener('click', function () { galeriaPerro.close(); });
+    galeriaPerro.addEventListener('click', function (e) { if (e.target === galeriaPerro) galeriaPerro.close(); });
+    galeriaPerro.querySelector('.flecha-ant').addEventListener('click', function () { mostrarFoto(indiceActual - 1); });
+    galeriaPerro.querySelector('.flecha-sig').addEventListener('click', function () { mostrarFoto(indiceActual + 1); });
+    galeriaPerro.addEventListener('keydown', function (e) {
+      if (!galeriaActual || galeriaActual.fotos.length < 2) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); mostrarFoto(indiceActual - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); mostrarFoto(indiceActual + 1); }
+    });
+    var xInicio = null;
+    var escenario = galeriaPerro.querySelector('.galeria-escenario');
+    escenario.addEventListener('touchstart', function (e) { xInicio = e.touches[0].clientX; }, { passive: true });
+    escenario.addEventListener('touchend', function (e) {
+      if (xInicio === null || !galeriaActual || galeriaActual.fotos.length < 2) return;
+      var dx = e.changedTouches[0].clientX - xInicio;
+      if (Math.abs(dx) > 40) mostrarFoto(indiceActual + (dx < 0 ? 1 : -1));
+      xInicio = null;
+    });
+  }
+
   /* ---------- Formulario de opinión (se envía por WhatsApp) ---------- */
   var form = document.getElementById('form-opinion');
   if (form) {
